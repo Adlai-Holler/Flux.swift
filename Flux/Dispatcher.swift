@@ -20,6 +20,8 @@ final class DispatchObserver<Payload> {
     }
 }
 
+private var instanceCount = 0
+
 public final class Dispatcher<Payload> {
 
 	var testAssertionHandler: (() -> Void)?
@@ -30,6 +32,15 @@ public final class Dispatcher<Payload> {
     var pendingPayload: Payload?
 
     let queue = dispatch_queue_create("Dispatcher.queue", DISPATCH_QUEUE_SERIAL)
+
+	init() {
+		assert(instanceCount == 0, "Only one instance of Dispatcher should ever be created.")
+		instanceCount += 1
+	}
+
+	deinit {
+		instanceCount -= 1
+	}
 
     func register(callback: (Payload) -> Void) -> DispatchToken {
         var token: DispatchToken!
