@@ -21,6 +21,9 @@ final class DispatchObserver<Payload> {
 }
 
 public final class Dispatcher<Payload> {
+
+	var testAssertionHandler: (() -> Void)?
+
     var observers: [DispatchToken: DispatchObserver<Payload>] = [:]
     private(set) var isDispatching = false
     var maxToken = 0
@@ -42,7 +45,7 @@ public final class Dispatcher<Payload> {
     func unregister(token: DispatchToken) {
         dispatch_async(queue) {
             let observer = self.observers.removeValueForKey(token)
-            assert(observer != nil, "Dispatcher.unregister(...): `\(token)` does not map to a registered callback.")
+            self.instanceAssert(observer != nil, "Dispatcher.unregister(...): `\(token)` does not map to a registered callback.")
         }
     }
 
@@ -60,12 +63,12 @@ public final class Dispatcher<Payload> {
         assert(isDispatching, "Dispatcher.waitFor(...): Must be invoked while dispatching.")
         for token in tokens {
             guard let observer = observers[token] else {
-                assertionFailure("Dispatcher.waitFor(...): `\(token)` does not map to a registered callback.")
+                instanceAssert(false, "Dispatcher.waitFor(...): `\(token)` does not map to a registered callback.")
                 continue
             }
 
             if observer.pending {
-                assert(observer.handled, "Dispatcher.waitFor(...): Circular dependency detected while waiting for `\(token)`.")
+                instanceAssert(observer.handled, "Dispatcher.waitFor(...): Circular dependency detected while waiting for `\(token)`.")
                 continue
             }
 
@@ -97,4 +100,16 @@ public final class Dispatcher<Payload> {
         pendingPayload = nil
         isDispatching = false
     }
+
+	/// A custom assertion method. If we're testing, this will call our
+	/// custom assertion handler. Otherwise it calls `assert`.
+	private func instanceAssert(@autoclosure body: () -> Bool, @autoclosure _ message: () -> String = "Assertion Failure", file: StaticString = __FILE__, line: UInt = __LINE__) {
+		if let testAssertionHandler = testAssertionHandler {
+			if !body() {
+				testAssertionHandler()
+			}
+		} else {
+			assert(body, message, file: file, line: line)
+		}
+	}
 }

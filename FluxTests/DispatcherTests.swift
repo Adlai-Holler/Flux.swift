@@ -44,4 +44,34 @@ final class DispatcherTests: XCTestCase {
 		dispatch_sync(dispatcher.queue, {})
 	}
 
+	func testThatItDetectsCircularDependenciesInWaitFor() {
+		let dispatcher = Dispatcher<Int>()
+		var gotAssertionFailure = false
+		dispatcher.testAssertionHandler = {
+			gotAssertionFailure = true
+		}
+		let sent = 5
+		var token2: DispatchToken?
+		let token1 = dispatcher.register { value in
+			dispatcher.waitFor([token2!])
+		}
+		token2 = dispatcher.register { value in
+			dispatcher.waitFor([token1])
+		}
+		dispatcher.dispatch(sent)
+		dispatch_sync(dispatcher.queue, {})
+		XCTAssertTrue(gotAssertionFailure)
+	}
+
+	func testThatUnregisteringANonexistantObserverThrows() {
+		let dispatcher = Dispatcher<Int>()
+		var gotAssertionFailure = false
+		dispatcher.testAssertionHandler = {
+			gotAssertionFailure = true
+		}
+		dispatcher.unregister(0)
+		dispatch_sync(dispatcher.queue, {})
+		XCTAssertTrue(gotAssertionFailure)
+	}
+
 }
