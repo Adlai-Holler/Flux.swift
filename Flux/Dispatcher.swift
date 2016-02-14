@@ -33,7 +33,7 @@ public final class Dispatcher<Payload> {
 
     let queue = dispatch_queue_create("Dispatcher.queue", DISPATCH_QUEUE_SERIAL)
 
-	init() {
+	public init() {
 		assert(instanceCount == 0, "Only one instance of Dispatcher should ever be created.")
 		instanceCount += 1
 	}
@@ -42,18 +42,17 @@ public final class Dispatcher<Payload> {
 		instanceCount -= 1
 	}
 
-    func register(callback: (Payload) -> Void) -> DispatchToken {
+    public func register(callback: (Payload) -> Void) -> DispatchToken {
         var token: DispatchToken!
         dispatch_sync(queue) {
             token = self.maxToken + 1
-            let observer = DispatchObserver(token: token, body: callback)
-            self.observers[token] = observer
+            self.observers[token] = DispatchObserver(token: token, body: callback)
             self.maxToken = token
         }
         return token
     }
 
-    func unregister(token: DispatchToken) {
+    public func unregister(token: DispatchToken) {
         dispatch_async(queue) {
             let observer = self.observers.removeValueForKey(token)
             self.instanceAssert(observer != nil, "Dispatcher.unregister(...): `\(token)` does not map to a registered callback.")

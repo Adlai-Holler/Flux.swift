@@ -1,0 +1,61 @@
+PODS:
+  - ArrayDiff (1.1.3)
+  - AsyncDisplayKit (1.9.6):
+    - AsyncDisplayKit/PINRemoteImage (= 1.9.6)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.9.6)
+  - AsyncDisplayKit/PINRemoteImage (1.9.6):
+    - AsyncDisplayKit/ASDealloc2MainObject
+    - PINRemoteImage/iOS (>= 2)
+  - Flux (0.1.0)
+  - PINCache (2.2)
+  - PINRemoteImage/Core (2.0):
+    - PINCache (>= 2.1)
+  - PINRemoteImage/iOS (2.0):
+    - PINRemoteImage/Core
+  - pop (1.0.9)
+  - ReactiveCocoa (4.0.1):
+    - ReactiveCocoa/UI (= 4.0.1)
+    - Result (~> 1.0.2)
+  - ReactiveCocoa/Core (4.0.1):
+    - ReactiveCocoa/no-arc
+    - Result (~> 1.0.2)
+  - ReactiveCocoa/no-arc (4.0.1):
+    - Result (~> 1.0.2)
+  - ReactiveCocoa/UI (4.0.1):
+    - ReactiveCocoa/Core
+    - Result (~> 1.0.2)
+  - Result (1.0.2)
+  - Whisper (2.0.2)
+
+DEPENDENCIES:
+  - ArrayDiff
+  - AsyncDisplayKit (from `https://github.com/facebook/AsyncDisplayKit`, branch `master`)
+  - Flux (from `../..`)
+  - pop
+  - ReactiveCocoa (~> 4.0.1)
+  - Whisper
+
+EXTERNAL SOURCES:
+  AsyncDisplayKit:
+    :branch: master
+    :git: https://github.com/facebook/AsyncDisplayKit
+  Flux:
+    :path: ../..
+
+CHECKOUT OPTIONS:
+  AsyncDisplayKit:
+    :commit: dc0db53a0d0f61cae6d2f505c7218af3681ea168
+    :git: https://github.com/facebook/AsyncDisplayKit
+
+SPEC CHECKSUMS:
+  ArrayDiff: 2925c7fbceb5928ab237002c73745c8973c8e948
+  AsyncDisplayKit: fdbbadc821dc6e46e4433a745f4f477d14579f1a
+  Flux: ed16b4972130bc1483b3990dbcab45434129340a
+  PINCache: 7a50338b82fd2d1993d6e9d2edc4ffb56d6d3c39
+  PINRemoteImage: 23729466b9ec74fe8bc75a9a119097b5ab90864e
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  ReactiveCocoa: f7011630aee4deeb16352fcb1b50d6bde9db4f90
+  Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
+  Whisper: 49abcba82d23dd20f0a9a025797cacd09c8aa3bb
+
+COCOAPODS: 0.39.0
