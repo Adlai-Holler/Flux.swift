@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC7ADAEB1C7107E0006ED937 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7ADAEA1C7107E0006ED937 /* StoreTests.swift */; };
 		CCCBA6AC1C6BBC7A00CD9C77 /* Flux.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCBA6AB1C6BBC7A00CD9C77 /* Flux.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CCCBA6B31C6BBC7A00CD9C77 /* Flux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCBA6A81C6BBC7A00CD9C77 /* Flux.framework */; };
 		CCCBA6B81C6BBC7A00CD9C77 /* DispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBA6B71C6BBC7A00CD9C77 /* DispatcherTests.swift */; };
 		CCCBA6C31C6BBCA800CD9C77 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBA6C21C6BBCA800CD9C77 /* Dispatcher.swift */; };
 		CCCBA6C51C6BBD4D00CD9C77 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBA6C41C6BBD4D00CD9C77 /* Store.swift */; };
-		CCCBA6C91C6BC5C700CD9C77 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBA6C81C6BC5C700CD9C77 /* StoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC7ADAEA1C7107E0006ED937 /* StoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
 		CCCBA6A81C6BBC7A00CD9C77 /* Flux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Flux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCBA6AB1C6BBC7A00CD9C77 /* Flux.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flux.h; sourceTree = "<group>"; };
 		CCCBA6AD1C6BBC7A00CD9C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		CCCBA6B91C6BBC7A00CD9C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCCBA6C21C6BBCA800CD9C77 /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		CCCBA6C41C6BBD4D00CD9C77 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		CCCBA6C81C6BC5C700CD9C77 /* StoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				CCCBA6B71C6BBC7A00CD9C77 /* DispatcherTests.swift */,
-				CCCBA6C81C6BC5C700CD9C77 /* StoreTests.swift */,
+				CC7ADAEA1C7107E0006ED937 /* StoreTests.swift */,
 				CCCBA6B91C6BBC7A00CD9C77 /* Info.plist */,
 			);
 			path = FluxTests;
@@ -213,7 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCCBA6B81C6BBC7A00CD9C77 /* DispatcherTests.swift in Sources */,
-				CCCBA6C91C6BC5C700CD9C77 /* StoreTests.swift in Sources */,
+				CC7ADAEB1C7107E0006ED937 /* StoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
