@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name        = "Flux"
-  s.version     = "0.1.1"
+  s.version     = "0.2.0"
   s.summary     = "A Swift implementation of the Flux application architecture."
   s.homepage    = "https://github.com/Adlai-Holler/Flux.swift"
   s.license     = { :type => "MIT" }
